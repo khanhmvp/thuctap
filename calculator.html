@@ -9,10 +9,15 @@
         function calculateResult() {
             const resultField = document.getElementById('result');
             try {
+                // Thay thế 'x²' bằng '**2' và '√' bằng 'Math.sqrt'
                 let expression = resultField.value
-                    .replace(/x²/g, '**2')  
-                    .replace(/√/g, 'Math.sqrt(') + ')';   
-                expression = expression.replace(/(\d+)%/g, '($1 / 100)');
+                    .replace(/x²/g, '**2')  // x² thành **2
+                    .replace(/√/g, 'Math.sqrt');  // √ thành Math.sqrt
+
+                // Xử lý phần trăm
+                expression = expression.replace(/(\d+)%/g, '($1 / 100)');  // Xử lý phần trăm
+                
+                // Tính toán kết quả
                 resultField.value = eval(expression);
             } catch (error) {
                 resultField.value = 'Error';
