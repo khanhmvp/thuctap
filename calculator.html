@@ -5,25 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="calculator.css">
-    <script>
-        function calculateResult() {
-            const resultField = document.getElementById('result');
-            try {
-                // Thay thế 'x²' bằng '**2' và '√' bằng 'Math.sqrt'
-                let expression = resultField.value
-                    .replace(/x²/g, '**2')  // x² thành **2
-                    .replace(/√/g, 'Math.sqrt');  // √ thành Math.sqrt
-
-                // Xử lý phần trăm
-                expression = expression.replace(/(\d+)%/g, '($1 / 100)');  // Xử lý phần trăm
-                
-                // Tính toán kết quả
-                resultField.value = eval(expression);
-            } catch (error) {
-                resultField.value = 'Error';
-            }
-        }
-    </script>
+    <script type="text/javascript" src="calculator.js"></script>
 </head>
 <body>
     <div class="container">
