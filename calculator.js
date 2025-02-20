@@ -1,14 +1,53 @@
-function calculateResult() {
-    const resultField = document.getElementById('result');
-    try {
-        let expression = resultField.value
-            .replace(/x²/g, '**2')  // Bình phương
-            .replace(/√(\d+)/g, 'Math.sqrt($1)')  // Căn bậc hai
-            .replace(/(\d+(\.\d+)?)%/g, '($1 * 0.01)');  // Phần trăm
 
-        // Tính toán kết quả một cách an toàn hơn
-        resultField.value = new Function('return ' + expression)();
+let display = document.getElementById("result");
+
+
+function appendValue(value) {
+    display.value += value;
+}
+
+
+function clearDisplay() {
+    display.value = "";
+}
+
+
+function deleteLastChar() {
+    display.value = display.value.slice(0, -1);
+}
+
+
+function calculateResult() {
+    try {
+        display.value = eval(display.value.replace("÷", "/").replace("×", "*"));
     } catch (error) {
-        resultField.value = 'Error';
+        display.value = "Error";
+    }
+}
+
+
+function toggleSign() {
+    if (display.value) {
+        display.value = String(-parseFloat(display.value));
+    }
+}
+
+function squareRoot() {
+    if (display.value) {
+        display.value = Math.sqrt(parseFloat(display.value));
+    }
+}
+
+
+function squareNumber() {
+    if (display.value) {
+        display.value = Math.pow(parseFloat(display.value), 2);
+    }
+}
+
+
+function reciprocal() {
+    if (display.value) {
+        display.value = 1 / parseFloat(display.value);
     }
 }

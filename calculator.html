@@ -5,49 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="calculator.css">
-    <script type="text/javascript" src="calculator.js"></script>
+    <script defer src="calculator.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="calculator">
             <form onsubmit="return false;">
                 <div class="display">
-                    <input type="text" name="display" id="result" readonly>
+                    <input type="text" id="result" readonly>
                 </div>
                 <div>
-                    <input type="button" class="ac" value="AC" onclick="result.value = ''">
-                    <input type="button" class="c" value="C" onclick="result.value = ''">
-                    <input type="button" class="cham" value="." onclick="result.value += '.'">
-                    <input type="button" class="del" value="&#8592" onclick="result.value = result.value.slice(0, -1)">
+                    <input type="button" value="%" class="func-btn" onclick="appendValue('%')">
+                    <input type="button" value="CE" class="func-btn" onclick="clearDisplay()">
+                    <input type="button" value="C" class="func-btn" onclick="clearDisplay()">
+                    <input type="button" value="←" class="func-btn" onclick="deleteLastChar()">
                 </div>
                 <div>
-                    <input type="button" class="pt" value="%" onclick="result.value += '%'">
-                    <input type="button" class="can" value="&#8730" onclick="result.value += '&#8730'">
-                    <input type="button" class="binh" value="x&#178" onclick="result.value += 'x&#178'">
-                    <input type="button" class="chia" value="&#247" onclick="result.value += '/'">
+                    <input type="button" value="1/x" class="func-btn" onclick="reciprocal()">
+                    <input type="button" value="√" class="func-btn" onclick="squareRoot()">
+                    <input type="button" value="x²" class="func-btn" onclick="squareNumber()">
+                    <input type="button" value="÷" class="op-btn" onclick="appendValue('/')">
                 </div>
                 <div>
-                    <input type="button" value="7" onclick="result.value += '7'">
-                    <input type="button" value="8" onclick="result.value += '8'">
-                    <input type="button" value="9" onclick="result.value += '9'">
-                    <input type="button" class="nhan" value="*" onclick="result.value += '*'">
+                    <input type="button" value="7" class="num-btn" onclick="appendValue('7')">
+                    <input type="button" value="8" class="num-btn" onclick="appendValue('8')">
+                    <input type="button" value="9" class="num-btn" onclick="appendValue('9')">
+                    <input type="button" value="×" class="op-btn" onclick="appendValue('*')">
                 </div>
                 <div>
-                    <input type="button" value="4" onclick="result.value += '4'">
-                    <input type="button" value="5" onclick="result.value += '5'">
-                    <input type="button" value="6" onclick="result.value += '6'">
-                    <input type="button" class="tru" value="-" onclick="result.value += '-'">
+                    <input type="button" value="4" class="num-btn" onclick="appendValue('4')">
+                    <input type="button" value="5" class="num-btn" onclick="appendValue('5')">
+                    <input type="button" value="6" class="num-btn" onclick="appendValue('6')">
+                    <input type="button" value="−" class="op-btn" onclick="appendValue('-')">
                 </div>
                 <div>
-                    <input type="button" value="1" onclick="result.value += '1'">
-                    <input type="button" value="2" onclick="result.value += '2'">
-                    <input type="button" value="3" onclick="result.value += '3'">
-                    <input type="button" class="cong" value="+" onclick="result.value += '+'">
+                    <input type="button" value="1" class="num-btn" onclick="appendValue('1')">
+                    <input type="button" value="2" class="num-btn" onclick="appendValue('2')">
+                    <input type="button" value="3" class="num-btn" onclick="appendValue('3')">
+                    <input type="button" value="+" class="op-btn" onclick="appendValue('+')">
                 </div>
-                <div class="last">
-                    <input type="button" value="00" onclick="result.value += '00'">
-                    <input type="button" value="0" onclick="result.value += '0'">
-                    <input type="button" value="=" onclick="calculateResult()" class="equal">
+                <div>
+                    <input type="button" value="±" class="num-btn" onclick="toggleSign()">
+                    <input type="button" value="0" class="num-btn" onclick="appendValue('0')">
+                    <input type="button" value="." class="num-btn" onclick="appendValue('.')">
+                    <input type="button" value="=" class="equal" onclick="calculateResult()">
                 </div>
             </form>
         </div>
